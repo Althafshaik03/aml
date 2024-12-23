@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AML Machine Learning Models</title>
+    <link href="https://fonts.googleapis.com/css?family=Heebo:400,700|Open+Sans:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* General Styles */
+        :root {
+          --color: #020108;
+          --transition-time: 0.5s;
+          --bg-card-color: #00162c;
+          --hover-color: #646464;
+          --text-color: #ece3e3;
+        }
+
+        * {
+          box-sizing: border-box;
+        }
+
+        body {
+          margin: 0;
+          min-height: 100vh;
+          font-family: 'Open Sans';
+          background: #6d5858;
+        }
+
+        a {
+          color: inherit;
+          text-decoration: none;
+        }
+
+        /* Header and Navbar Styles */
+        header {
+          background-color: rgb(87, 46, 46);
+          padding: 1rem;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .logo {
+          color: rgb(255, 255, 255);
+          font-size: 1.8rem;
+          font-weight: bold;
+        }
+
+        nav {
+          display: flex;
+          gap: 2rem;
+        }
+
+        nav ul {
+          display: flex;
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          gap: 1rem;
+        }
+
+        nav ul li {
+          position: relative;
+        }
+
+        nav ul li a {
+          color: rgb(219, 65, 168);
+          font-size: 1.2rem;
+        }
+
+        nav ul li a:hover {
+          color: #ff9f10;
+        }
+
+        /* Dropdown Menu */
+        .dropdown {
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          background-color: rgb(255, 0, 0);
+          box-shadow: 0px 8px 16px rgba(146, 126, 126, 0.2);
+          min-width: 160px;
+        }
+
+        .dropdown a {
+          color: rgb(235, 83, 46);
+          padding: 1rem;
+          display: block;
+        }
+
+        .dropdown a:hover {
+          background-color: #666;
+        }
+
+        nav ul li:hover .dropdown {
+          display: block;
+        }
+
+        /* Section Styles */
+        section {
+          padding: 4rem 2rem;
+          text-align: center;
+        }
+
+        h1 {
+          font-size: 2.5rem;
+          margin-bottom: 1.5rem;
+        }
+
+        h2 {
+          font-size: 2rem;
+          margin-bottom: 1rem;
+        }
+
+        /* Card Layout */
+        .cards-wrapper {
+          display: flex;
+          justify-content: space-evenly;
+          flex-wrap: wrap;
+          gap: 2rem;
+          padding: 2rem;
+        }
+
+        .card {
+          font-family: 'Heebo';
+          --bg-filter-opacity: 0.5;
+          height: 22em;
+          width: 16em;
+          font-size: 1.2em;
+          color: rgb(252, 252, 252);
+          border-radius: 1em;
+          padding: 1.5em;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          background-size: cover;
+          background-position: center;
+          box-shadow: 20px 16px 12px rgba(158, 100, 233, 0.938);
+          transition: transform 0.3s ease-in-out, background-color 0.3s;
+          position: relative;
+          overflow: hidden;
+          border: none;
+        }
+
+        .card h1 {
+          font-size: 1.6em;
+          line-height: 1.3em;
+          font-weight: 700;
+          margin: 0;
+          color: var(--text-color);
+        }
+
+        .card p {
+          font-size: 1em;
+          margin-top: 0.5em;
+          line-height: 1.5em;
+        }
+
+        .card .tags {
+          display: flex;
+          margin-top: auto;
+          gap: 0.5rem;
+        }
+
+        .card .tags .tag {
+          font-size: 0.85em;
+          background: rgba(116, 83, 53, 0.918);
+          border-radius: 0.3rem;
+          padding: 0 0.6em;
+          margin-right: 0.5em;
+          line-height: 1.5em;
+          transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .card:hover {
+          transform: scale(1.05);
+          background-color: rgba(167, 124, 124, 0.4);
+        }
+
+        .card:hover .tags .tag {
+          background: var(--hover-color);
+          color: rgb(150, 150, 150);
+        }
+
+        .card .date {
+          position: absolute;
+          top: 0;
+          right: 0;
+          font-size: 0.85em;
+          padding: 1rem;
+          line-height: 1em;
+          background-color: rgba(248, 174, 174, 0.842);
+          color: rgb(65, 37, 37);
+        }
+
+        .card:nth-child(1) {
+          background-image: url('https://www.thoughtco.com/thmb/7IikphtELVKUGukIl9M2fm2ywEc=/1944x1541/filters:fill(auto,1)/GettyImages-1077897682-ab4faa18e5444d4b85dc7a8f0dab5c1c.jpg');
+        }
+
+        .card:nth-child(2) {
+          background-image: url('https://wallpaperaccess.com/full/1543703.jpg');
+        }
+
+        .card:nth-child(3) {
+          background-image: url('https://images.theconversation.com/files/374303/original/file-20201210-18-elk4m.jpg?ixlib=rb-1.1.0&rect=0,22,7500,5591&q=45&auto=format&w=926&fit=clip');
+        }
+
+        @media screen and (max-width: 1285px) {
+          .cards-wrapper {
+            flex-direction: column;
+            align-items: center;
+          }
+        }
+
+        @media screen and (max-width: 900px) {
+          .cards-wrapper {
+            flex-direction: column;
+          }
+        }
+
+        /* About Developer Section */
+        .about-developer {
+            padding: 2rem;
+            background-color: #f4f4f4;
+            margin-top: 3rem;
+            position: relative;
+        }
+
+        .extra-info {
+            display: none;
+            margin-top: 1rem;
+            font-size: 1.1rem;
+            line-height: 1.5;
+        }
+
+        .show-more-btn {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #ff9f10;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .show-more-btn:hover {
+            background-color: #e6890f;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="logo">AML Detection</div>
+        <nav>
+            <ul>
+                <li><a href="#Home" target="_blank"><i class="fas fa-home"></i> Homepage</a></li>
+                <li><a href="introduction.html"><i class="fas fa-info-circle"></i> Introduction</a></li>
+                <li><a href="chatbot.html" target="_blank"><i class="fas fa-chart-line"></i> ML Prediction</a></li>
+                <li class="dropdown">
+                    <a href="#"><i class="fas fa-bars"></i> Menu</a>
+                    <div class="dropdown">
+                        <a href="#introduction">Introduction</a>
+                        <a href="#homepage" target="_blank">Homepage</a>
+                        <a href="chatbot.html" target="_blank">ML Prediction</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Introduction Section -->
+    <section id="introduction">
+        <h1>Welcome to Anti-Money Laundering (AML) Detection</h1>
+        <p>Our platform helps detect and prevent money laundering activities using advanced machine learning models. Explore different models used in AML detection below!</p>
+    </section>
+
+    <!-- Homepage Section -->
+    <section id="homepage">
+        <h2>Homepage</h2>
+        <p>This section provides an overview of the machine learning techniques used to combat financial crime. Learn about the latest technologies and how they are applied to detect suspicious activity.</p>
+    </section>
+
+    <!-- ML Prediction Section -->
+    <section id="ml-prediction">
+        <h2>Machine Learning Models for AML</h2>
+        <p>Machine learning models play a crucial role in detecting fraudulent activities in financial transactions. Below, you'll find different machine learning models that are commonly used in AML systems.</p>
+
+        <!-- AML Models Cards -->
+        <div class="cards-wrapper">
+            <a href="https://www.cs.toronto.edu/~axgao/cs486686_f21/lecture_notes/Lecture_07_on_Decision_Trees.pdf" target="_blank" class="card">
+                <h1>Decision Tree</h1>
+                <p>Decision tree algorithms classify transactions to detect potential fraudulent activities in AML systems.</p>
+                <div class="date">25 October 2023</div>
+                <div class="tags">
+                    <div class="tag">Supervised Learning</div>
+                </div>
+            </a>
+
+            <a href="https://builtin.com/data-science/random-forest-algorithm" target="_blank" class="card">
+                <h1>Random Forest</h1>
+                <p>Random Forest improves prediction accuracy by aggregating multiple decision trees for AML tasks.</p>
+                <div class="date">18 September 2023</div>
+                <div class="tags">
+                    <div class="tag">Ensemble Learning</div>
+                </div>
+            </a>
+
+            <a href="https://www.cloudflare.com/learning/ai/what-is-neural-network/" target="_blank" class="card">
+                <h1>Neural Networks</h1>
+                <p>Neural Networks are deep learning models used for detecting non-linear patterns in financial transactions, enhancing AML systems.</p>
+                <div class="date">10 August 2023</div>
+                <div class="tags">
+                    <div class="tag">Deep Learning</div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- About Developer Section -->
+    <section class="about-developer">
+        <h2>About the Developer</h2>
+        <p>Hi, I'm a developer passionate about leveraging machine learning techniques to solve real-world problems. With a focus on financial crime detection, I aim to help build systems that promote security and transparency in financial transactions.</p>
+        <button type="button" class="show-more-btn" onclick="toggleExtraInfo()">Show More</button>
+        <div class="extra-info">
+            <p>In my career, I've worked on several projects involving data analysis, machine learning models, and financial technology (FinTech). I'm always excited to explore new challenges and push the boundaries of innovation.</p>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create an audio element and preload it
+            const audio = new Audio('click-sound.mp3'); // Replace with the correct path to your click sound file
+            audio.preload = 'auto';  // Ensure the sound is preloaded when the page loads
+
+            // Ensure the audio is fully loaded before any clicks
+            audio.addEventListener('canplaythrough', function() {
+                console.log('Audio ready to play');
+            });
+
+            // Function to play click sound
+            function playClickSound() {
+                audio.currentTime = 0;  // Rewind to the start, in case it's already playing
+                audio.play(); // Play the sound immediately
+            }
+
+            // Add click sound effect to all 'a' elements (links)
+            const buttons = document.querySelectorAll('a');
+            buttons.forEach(button => {
+                button.addEventListener('click', function() {
+                    playClickSound();
+                });
+            });
+
+            // Optionally add click sound to other elements like buttons or divs
+            const clickableElements = document.querySelectorAll('button, .clickable, .highlighted-text');
+            clickableElements.forEach(element => {
+                element.addEventListener('click', function() {
+                    playClickSound();
+                });
+            });
+        });
+
+        function toggleExtraInfo() {
+            var extraInfo = document.querySelector('.extra-info');
+            var button = document.querySelector('.show-more-btn');
+            
+            if (extraInfo.style.display === 'none' || extraInfo.style.display === '') {
+                extraInfo.style.display = 'block';
+                button.textContent = 'Show Less';
+            } else {
+                extraInfo.style.display = 'none';
+                button.textContent = 'Show More';
+            }
+        }
+    </script>
+</body>
+</html>

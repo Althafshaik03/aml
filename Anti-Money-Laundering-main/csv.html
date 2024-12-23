@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AML Anti-Money Laundering</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(120deg, #1e3c72, #2a5298);
+            color: #fff;
+        }
+        .navbar {
+            background: #111;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: bold;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+        }
+        .hero {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .hero img {
+            width: 100%;
+            max-width: 800px;
+            border-radius: 10px;
+        }
+        .about-section {
+            margin: 40px 0;
+            text-align: left;
+        }
+        .about-section img, .about-section video {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="about.html">About AML</a>
+        <a href="dataset.html">Dataset Viewer</a>
+        <a href="chatbot.html">Chatbot Assistant</a>
+    </div>
+
+    <!-- Homepage Content -->
+    <div class="container" id="home">
+        <h1>Welcome to Anti-Money Laundering (AML) Insights</h1>
+        <div class="hero">
+            <img src="aml_hero.jpg" alt="AML Hero Image">
+            <p>Your go-to platform for understanding and combating money laundering activities with interactive tools and datasets.</p>
+        </div>
+        <p>
+            Use the navigation bar above to:
+        </p>
+        <ul>
+            <li><strong>About AML:</strong> Learn the fundamentals and significance of Anti-Money Laundering efforts.</li>
+            <li><strong>Dataset Viewer:</strong> Explore our dataset dynamically with visualizations and insights.</li>
+            <li><strong>Chatbot Assistant:</strong> Interact with our AI-powered chatbot for guidance and assistance.</li>
+        </ul>
+    </div>
+
+    <!-- About AML Page Content -->
+    <div class="container" id="about">
+        <h1>About Anti-Money Laundering (AML)</h1>
+        <div class="about-section">
+            <h2>What is AML?</h2>
+            <p>
+                Anti-Money Laundering (AML) refers to laws, regulations, and procedures intended to prevent criminals from disguising illegally obtained funds as legitimate income.
+            </p>
+            <img src="aml_infographic.jpg" alt="AML Infographic">
+        </div>
+        <div class="about-section">
+            <h2>Why is AML Important?</h2>
+            <p>
+                Money laundering enables organized crime, corruption, and terrorism. AML efforts help ensure financial systems remain secure and trustworthy.
+            </p>
+            <video controls>
+                <source src="aml_video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="about-section">
+            <h2>Global Impact of AML Efforts</h2>
+            <p>
+                AML initiatives require global cooperation, as criminals often move money across borders. The Financial Action Task Force (FATF) sets international standards for AML compliance.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        console.log("Homepage and About AML sections loaded.");
+    </script>
+</body>
+</html>
